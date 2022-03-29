@@ -5,11 +5,11 @@ Global:
   output_dir: ./output/
   device: gpu
   save_interval: 1
-  eval_during_train: True
+  eval_during_train: False
   eval_interval: 1
-  epochs: 120
+  epochs: 1
   print_batch_step: 10
-  use_visualdl: False
+  use_visualdl: True
   # used for static mode and model export
   image_shape: [3, 224, 224]
   save_inference_dir: ./inference
@@ -49,8 +49,8 @@ DataLoader:
   Train:
     dataset:
       name: ImageNetDataset
-      image_root: ./dataset/ILSVRC2012/
-      cls_label_path: ./dataset/ILSVRC2012/train_list.txt
+      image_root: ../dataset/ILSVRC2012/
+      cls_label_path: ../dataset/ILSVRC2012/train_list.txt
       transform_ops:
         - DecodeImage:
             to_rgb: True
@@ -72,13 +72,13 @@ DataLoader:
       shuffle: True
     loader:
       num_workers: 4
-      use_shared_memory: True
+      use_shared_memory: False
 
   Eval:
     dataset: 
       name: ImageNetDataset
-      image_root: ./dataset/ILSVRC2012/
-      cls_label_path: ./dataset/ILSVRC2012/val_list.txt
+      image_root: ../dataset/ILSVRC2012/
+      cls_label_path: ../dataset/ILSVRC2012/val_list.txt
       transform_ops:
         - DecodeImage:
             to_rgb: True
@@ -99,7 +99,7 @@ DataLoader:
       shuffle: False
     loader:
       num_workers: 4
-      use_shared_memory: True
+      use_shared_memory: False
 
 Infer:
   infer_imgs: docs/images/inference_deployment/whl_demo.jpg
