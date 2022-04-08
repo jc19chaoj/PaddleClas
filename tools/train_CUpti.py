@@ -23,6 +23,18 @@ ALT_PATH="/paddle/chao/experiments-1/AcrossLevelTracer"
 sys.path.append(ALT_PATH)
 import AcrossLevelTracer as ALT
 
+# Add CUptiTracer path
+# New
+CUpti_PATH = ALT_PATH + "/profilers/CUptiTracer/lib"
+sys.path.append(CUpti_PATH)
+import cuptiTracer
+
+# Old
+#CUpti_PATH = "/paddle/chao/experiments-1/CUptiTracer/lib"
+#sys.path.append(CUpti_PATH)
+#from cuptiTracer import cuptiTracer as ct
+
+# Original code
 __dir__ = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(os.path.abspath(os.path.join(__dir__, '../')))
 
@@ -30,19 +42,15 @@ from ppcls.utils import config
 from ppcls.engine.engine import Engine
 
 if __name__ == "__main__":
+    #with ct():
     args = config.parse_args()
     config = config.get_config(
         args.config, overrides=args.override, show=False)
     config.profiler_options = args.profiler_options
+    
+    # enable CUptiTarcer
+    ct = cuptiTracer.cuptiTracer("/etc/libCUptiTracer.conf")
+    ct.cuptiTracerStart()
     engine = Engine(config, mode="train")
-
-    with ALT.AcrossLevelTracer(framework = 0,
-        host_status = 0,
-        ops_status = 1,
-        device_status = 0,
-        async_prep = 1,
-        async_status = 1,
-        traced_command=sys.argv,
-        no_cuptiTracer=False): 
-        
-        engine.train()
+    engine.train()
+    ct.cuptiTracerStop()

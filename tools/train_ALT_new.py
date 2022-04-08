@@ -19,7 +19,7 @@ import os
 import sys
 
 # Add ALT path to sys.path
-ALT_PATH="/paddle/chao/AcrossLevelTracer"
+ALT_PATH="/paddle/chao/experiments-1/AcrossLevelTracer"
 sys.path.append(ALT_PATH)
 import AcrossLevelTracer as ALT
 

@@ -1,0 +1,11 @@
+Log file created at: 2022/04/07 02:03:17
+Running on machine: sjc1-aaa-6156-sl1.lab.usdc.baidu.com
+Running duration (h:mm:ss): 0:00:00
+Log line format: [IWEF]yyyymmdd hh:mm:ss.uuuuuu threadid file:line] msg
+I20220407 02:03:17.306056 19448 CUptiTracerMgr.cpp:17] CUptiTracerMgr starts working, PID : 19448
+I20220407 02:03:17.306243 19448 CUptiTracerMgr.cpp:39] Profiling tracer enabled, PID : 19448
+I20220407 02:03:17.306300 19448 CUptiTracerMgr.cpp:44] Activity tracer enabled, PID : 19448
+I20220407 02:03:17.476354 19448 CUptiActivityAPI.cpp:137] Activity API starts working, PID : 19448
+I20220407 02:03:17.476392 19448 CUptiProfilingAPI.cpp:394] Profiling API starts working, PID : 19448
+I20220407 02:03:17.730123 19448 CUptiProfilingAPI.cpp:184] Write Ctx Info PID: 19448, Context: 0x564240a05050
+I20220407 02:03:25.998227 19448 CUptiProfilingAPI.cpp:256] Arrived at desired recorded session number, PID : 19448
